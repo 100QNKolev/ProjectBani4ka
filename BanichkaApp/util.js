@@ -4,7 +4,7 @@ import { interpolate } from 'react-native-reanimated';
 export function formatDate(dateString) {
     const parsedDate = moment(new Date(dateString));
 
-    if(!parsedDate.isValid()) { //parsedDate.isValid() == false
+    if(!parsedDate.isValid()) {
         return Date.now();
     }
 
@@ -21,3 +21,5 @@ export function getCountdownParts(eventDate) {
         seconds: duration.get('seconds')
     }
 }
+
+//ей тва ти е работата вече оттук нататък - беше се направил "файл", който уж е директория и той объркваше нещата :D 

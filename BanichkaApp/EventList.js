@@ -12,23 +12,22 @@ class EventList extends Component {
 
   componentDidMount() {
     this.props.navigation.addListener('focus', () => {
-      getEvents().then(events => this.setState({events}))
+      getEvents().then(events => this.setState({events}));
     });
-
+    
     setInterval(() => {
       this.setState({
         events: this.state.events.map(item => ({
           ...item,
           updateTime: Date.now()
         }))
-      })
-    }, 1000);
+      });
+    }, 1000); 
   }
 
   render() {
     return (
-      <View 
-      style={styles.listView}>
+      <View style={styles.listView}>
         <FlatList
           data={this.state.events}
           renderItem={({ item }) => <EventCard eventItem={item} />}
@@ -45,12 +44,7 @@ class EventList extends Component {
 export default EventList;
 
 const styles = StyleSheet.create({
-  eventList: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
   listView: {
-    paddingBottom: 40
-  }
+    paddingBottom: 40,
+  },
 });

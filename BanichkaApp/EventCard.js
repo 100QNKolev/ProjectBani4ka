@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import {formatDate, getCountdownParts} from './util';
+import { formatDate, getCountdownParts } from './util';
 
 export default function EventCard({ eventItem }) {
     const countdown = getCountdownParts(eventItem.date);
 
     return (
         <View style={styles.eventCard}>
-            <View style={styles.cardHeader}>
+            <View style={styles.eventCardHeader}>
                 <Text style={styles.title}>{eventItem.title}</Text>
                 <Text style={styles.date}>{formatDate(eventItem.date)}</Text>
             </View>
             <Text style={styles.description}>{eventItem.description}</Text>
             <View style={styles.counterContainer}>
-                <View>
+                <View style={styles.counter}>
                     <Text style={styles.counterText}>{countdown.days}</Text>
-                    <Text style={styles.counterLabel}>DAYS</Text>
+                    <Text style={styles.counterLabel}>Days</Text>
                 </View>
-                <View>
+                <View style={styles.counter}>
                     <Text style={styles.counterText}>{countdown.hours}</Text>
-                    <Text style={styles.counterLabel}>HOURS</Text>
+                    <Text style={styles.counterLabel}>Hours</Text>
                 </View>
-                <View>
+                <View style={styles.counter}>
                     <Text style={styles.counterText}>{countdown.minutes}</Text>
-                    <Text style={styles.counterLabel}>MINUTES</Text>
+                    <Text style={styles.counterLabel}>Minutes</Text>
                 </View>
-                <View>
+                <View style={styles.counter}>
                     <Text style={styles.counterText}>{countdown.seconds}</Text>
-                    <Text style={styles.counterLabel}>SECONDS</Text>
+                    <Text style={styles.counterLabel}>Seconds</Text>
                 </View>
             </View>
         </View>
@@ -36,34 +36,33 @@ export default function EventCard({ eventItem }) {
 
 const styles = StyleSheet.create({
     eventCard: {
-        borderWidth: 1,
         borderColor: 'black',
+        borderWidth: 1,
         marginBottom: 16,
         padding: 16,
         backgroundColor: '#04b032',
         width: '100%'
     },
-    cardHeader: {
+    eventCardHeader: {
         flex: 1,
         flexDirection: 'row'
     },
     title: {
-        fontSize: 48,
+        fontSize: 38,
         color: '#fff',
         textAlign: 'left',
-        width: '70%'
+        flexBasis: '80%'
+    },
+    date: {
+        textAlign: 'right',
+        flexBasis: '20%',
+        fontSize: 38,
+        color: '#ffffff'
     },
     description: {
         fontSize: 24,
         marginTop: 16,
         color: '#fff'
-    },
-    date: {
-        fontWeight: 200,
-        fontSize: 35,
-        color: '#ffffff',
-        width: '30%',
-        textAlign: 'right'
     },
     counterContainer: {
         flex: 1,
@@ -73,20 +72,17 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     counter: {
-        width: '25%'
+        flexBasis: '25%'
     },
     counterText: {
         fontSize: 40,
         textAlign: 'center',
-        width: '100%',
-        color: '#ffffff'
+        color: '#fff'
     },
     counterLabel: {
-        fontSize: 13,
-        fontWeight: 100,
-        color: '#ffffff',
+        fontSize: 18,
         textAlign: 'center',
-        paddingTop: 0,
-        width: '100%'
+        textTransform: 'uppercase',
+        color: '#fff'
     }
 });
